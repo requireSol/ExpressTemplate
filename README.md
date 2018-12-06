@@ -1,2 +1,0 @@
-# WebGameNodejs
-A Multiplayer Game
