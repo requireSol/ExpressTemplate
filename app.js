@@ -5,6 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var lessMiddleware = require('less-middleware');
 var logger = require('morgan');
+var fs = require('fs'); // File Management system
 
 //Routes Create Route but dont use them Only Path
 //The route we getting from indes.js will be Written to indexRouter
@@ -30,6 +31,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Use Route and tell the Paths on Url // Tell were the route starts *1
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+//Connect
+mongoose.connect('mongoose://127.0.0.1/mongo');
+
+//Loop trough all models directory and load files js
+//load all files ind models dir
+fs.readdirSync(__dirname + '/models').forEach(function(file){
+      if(~filename.indexOf('.js')) require(__dirname + '/models/' + filename)
+    }
+);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
