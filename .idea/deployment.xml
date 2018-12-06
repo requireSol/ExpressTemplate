@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="rase" showNewOnSourceInSync="false">
+    <serverData>
+      <paths name="rase">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/enam.rase.io" local="$PROJECT_DIR$" web="" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$" />
+            <excludedPath path="/enam.rase.io" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

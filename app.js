@@ -30,18 +30,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Use Route and tell the Paths on Url // Tell were the route starts *1
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//app.use('/users', usersRouter);
 
 //Connect
-mongoose.connect('mongoose://127.0.0.1/mongo');
+//mongoose.connect('mongoose://127.0.0.1/mongo');
 
 //Loop trough all models directory and load files js
 //load all files ind models dir
+/*
 fs.readdirSync(__dirname + '/models').forEach(function(file){
       if(~filename.indexOf('.js')) require(__dirname + '/models/' + filename)
     }
 );
-
+*/
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
