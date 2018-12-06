@@ -13,3 +13,6 @@
 
 /Start nodemon
 //nodemon bin/www
+
+/Install Mongoose with -S to save in package.json
+//npm install -S mongoose
