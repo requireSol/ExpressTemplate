@@ -12,8 +12,6 @@ router.get('/', function(req, res, next) {
     // you can get Post and get Variables from
     //req.query.name req.query.password req.query.title
 
-
-
     //Send to routes/index the Title: 'Express' can add , 404 or 200 prob
     res.render('index', { title: 'Express' });
 

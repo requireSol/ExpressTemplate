@@ -1,13 +1,25 @@
-/*
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-
-var userSchema = new Schema({
-    name: String,
-    user: Schema.ObjectId // Access to user Schema ObjectId
+/*var mongoose = require('mongoose');
+var UserSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        unique: true,
+        required: true,
+        trim: true
+    },
+    username: {
+        type: String,
+        unique: true,
+        required: true,
+        trim: true
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+    passwordConf: {
+        type: String,
+        required: true,
+    }
 });
-mongoose.model('users', usersSchema);
-*/
-//Create Model
-//mongoose.model('users', {name: String});
-
+var User = mongoose.model('User', UserSchema);
+module.exports = User;*/
