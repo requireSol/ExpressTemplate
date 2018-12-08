@@ -1,4 +1,4 @@
-/*var mongoose = require('mongoose');
+var mongoose = require('mongoose');
 var UserSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -22,4 +22,4 @@ var UserSchema = new mongoose.Schema({
     }
 });
 var User = mongoose.model('User', UserSchema);
-module.exports = User;*/
+module.exports = User;

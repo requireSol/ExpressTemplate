@@ -6,28 +6,17 @@ var cookieParser = require('cookie-parser');
 var lessMiddleware = require('less-middleware');
 var logger = require('morgan');
 var fs = require('fs'); // File Management system
-var MongoClient = require('mongodb').MongoClient;
+var mongoose = require('mongoose');
 
 
 //Routes Create Route but dont use them Only Path
 //The route we getting from indes.js will be Written to indexRouter
 var indexRouter = require('./routes/index');
+//var verionRouter = require('./routes/version');
 var usersRouter = require('./routes/users');
 
 //Create App
 var app = express();
-
-var url = "mongodb://localhost:27017/";
-
-MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
-  if (err) throw err;
-  var dbo = db.db("rase");
-  dbo.createCollection("user", function(err, res) {
-    if (err) throw err;
-    console.log("Collection created!");
-    db.close();
-  });
-});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -44,16 +33,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Use Route and tell the Paths on Url // Tell were the route starts *1
 app.use('/', indexRouter);
-//app.use('/users', usersRouter);
+app.use('/users', usersRouter);
 
 //Loop trough all models directory and load files js
 //load all files ind models dir
-/*
+
+mongoose.connect('mongodb://localhost:27017/rase',  { useNewUrlParser: true, useCreateIndex:true});
+
 fs.readdirSync(__dirname + '/models').forEach(function(file){
-      if(~filename.indexOf('.js')) require(__dirname + '/models/' + filename)
+      if(file.indexOf('.js')) require(__dirname + '/models/' + file)
     }
 );
-*/
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
