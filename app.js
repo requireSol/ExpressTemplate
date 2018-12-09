@@ -47,8 +47,6 @@ fs.readdirSync(__dirname + '/models').forEach(function(file){
     }
 );*/
 
-require(__dirname + '/models/users.js')
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
