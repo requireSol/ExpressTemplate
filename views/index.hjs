@@ -69,10 +69,9 @@ span.psw {
 </head>
 
 <body>
-
   <h2>{{ title }}</h2>
-<!--
-  <form action="/users" method="get">
+
+  <form action="/users" method="post">
     <div class="container">
       <label for="uname"><b>Email</b></label>
       <input type="text" placeholder="Enter Username" name="email" required>
@@ -95,6 +94,6 @@ span.psw {
 
     </div>
   </form>
-!--></body>
+</body>
 
 </html>

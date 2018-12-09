@@ -35,15 +35,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-//Loop trough all models directory and load files js
-//load all files ind models dir
-
+//Connect to json db
 mongoose.connect('mongodb://localhost:27017/rase',  { useNewUrlParser: true, useCreateIndex:true});
 
+
+//Loop trough all models directory and load files js
+//load all files ind models dir
+/*
 fs.readdirSync(__dirname + '/models').forEach(function(file){
       if(file.indexOf('.js')) require(__dirname + '/models/' + file)
     }
-);
+);*/
+
+require(__dirname + '/models/users.js')
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
