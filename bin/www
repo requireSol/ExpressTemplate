@@ -7,10 +7,13 @@
 var app = require('../app');
 var debug = require('debug')('rase:server');
 var http = require('http');
+var https = require('https');
+var fs = require('fs');
 
 /**
  * Get port from environment and store in Express.
  */
+
 
 var port = normalizePort(process.env.PORT || '80');
 app.set('port', port);
@@ -20,7 +23,15 @@ console.log("Server Started on Port " + port);
  */
 
 var server = http.createServer(app);
-
+/*
+https.createServer({
+  key: fs.readFileSync('/etc/letsencrypt/keys/0000_key-certbot.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/csr/0000_csr-certbot.pem'),
+  //ca: fs.readFileSync('/etc/letsencrypt/archive/enam.rase.io/chain3.pem')
+}, app).listen(443, () => {
+  console.log('Https Listening on Port 443')
+})
+*/
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -88,3 +99,5 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+server.close();
