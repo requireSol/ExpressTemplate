@@ -14,7 +14,7 @@ var fs = require('fs');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '443');
+var port = normalizePort(process.env.PORT || '80');
 app.set('port', port);
 
 // Certificate
@@ -29,14 +29,16 @@ const credentials = {
 };
 
 // Starting both http & https servers
-const httpServer = http.createServer(app);
-const server = https.createServer(credentials, app);
-
-httpServer.listen(80, () => {
-	console.log('HTTP Server running on port 80');
+var server = http.createServer(function (req, res) {
+    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+    res.end();
+}).listen(80, () => {
+	console.log('HTTP Server running on port 80 and will redirect to https');
 });
 
-server.listen(443, () => {
+const httpsServer = https.createServer(credentials, app);
+
+httpsServer.listen(443, () => {
 	console.log('HTTPS Server running on port 443');
 });
 
